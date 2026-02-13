@@ -273,26 +273,41 @@ body {
     transform: translateY(2px);
 }
 
+/* 電話圖示按鈕（繼承原本 .phone-button 的風格） */
 .phone-button {
     font-family: 'Noto Serif TC', serif;
     font-weight: 700;
     background: var(--primary-blue);
     color: white;
     border: none;
-    padding: 0.75rem 1.75rem;
-    border-radius: 8px;
+    /* 改成圓形 */
+    width: 48px;
+    height: 48px;
+    padding: 0;  /* 移除內距，讓圖示置中 */
+    border-radius: 50%;  /* 從 8px 改成圓形 */
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    justify-content: center;  /* 水平置中 */
+    gap: 0;  /* 沒有文字，不需要 gap */
     cursor: pointer;
     transition: all 0.3s;
     text-decoration: none;
-    font-size: 1rem;
+    font-size: 1.2rem;  /* 圖示稍微放大 */
 }
+
 .phone-button:hover {
     background: var(--primary-dark);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+    transform: translateY(-2px) scale(1.1);  /* 保留上移 + 放大 */
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+/* 手機板調整（如果需要） */
+@media (max-width: 768px) {
+    .phone-button {
+        width: 44px;
+        height: 44px;
+        font-size: 1.1rem;
+    }
 }
 
 .menu-toggle {
@@ -1211,13 +1226,13 @@ footer {
             <a href="#charity" class="nav-link">公益活動</a>
             <a href="#activities" class="nav-link">近期活動</a>
             <a href="#contact" class="nav-link">聯絡資訊</a>
-            <a href="📲" class="phone-button">
-                <i class="fas fa-phone-alt"></i> 📲
+            <a href="tel:0928789592" class="phone-button" title="撥打給余天佑老師">
+                <i class="fas fa-phone-alt"></i>
             </a>
         </div>
 
         <!-- 手機板獨立電話按鈕 -->
-        <a href="📲" class="phone-button-mobile">
+        <a href="tel:0928789592" class="phone-button-mobile">
             <i class="fas fa-phone-alt"></i>
         </a>
     </nav>
@@ -1786,7 +1801,7 @@ footer {
         </div>
         <div class="student-content">
             <div class="student-meta">
-                <div class="student-name">黃先生</div>
+                <div class="student-name">黃同學</div>
             </div>
             <div class="student-achievement">
                 <i class="fas fa-trophy"></i> 2025 東石蠔聲音 冠軍
