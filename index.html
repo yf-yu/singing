@@ -35,23 +35,82 @@
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "余天佑",
-    "jobTitle": "歌唱教師/歌唱比賽評審/活動主持人",
-    "description": "全國歌唱大賽冠軍，巧韻歌藝教唱班指導老師",
-    "url": "https://您的網址.com",
-    "knowsAbout": ["台語歌唱比賽", "歌唱教學", "歌唱評審", "活動主持", "長青歌唱", "社區歌唱活動"],
-    "award": "全國歌唱大賽冠軍",
+    "jobTitle": [
+        "歌唱教師",
+        "歌唱比賽評審",
+        "活動主持人"
+    ],
+    "description": "全國歌唱大賽冠軍，14年歌唱比賽評審經驗，巧韻歌藝教唱班指導老師，培育多位冠軍學生。",
+    "url": "https://yutainyow-singing.pages.dev/",
+    "sameAs": [
+        "https://www.facebook.com/yu.tian.you.765447",
+    ],
+    "knowsAbout": [
+        "台語歌唱比賽",
+        "歌唱教學",
+        "歌唱評審",
+        "活動主持",
+        "長青歌唱",
+        "社區歌唱活動",
+        "台語老歌教學",
+        "樂齡發聲法"
+    ],
+    "award": [
+        "全國歌唱大賽冠軍",
+        "東石漁人盃歌唱大賽評審",
+        "嘉義縣嘉有好聲音歌唱大賽評審"
+    ],
     "hasOccupation": {
         "@type": "Occupation",
-        "name": "歌唱教師"
+        "name": "歌唱教師",
+        "occupationalCategory": "教育/藝術",
+        "skills": "台語歌唱教學、歌唱比賽評審、活動主持",
+        "experienceRequirements": {
+            "@type": "OccupationalExperienceRequirements",
+            "yearsOfExperience": 14
+        }
     },
     "workLocation": {
         "@type": "Place",
+        "address": {
+            "@type": "PostalAddress",
+            "addressRegion": "嘉義縣",
+            "addressLocality": "東石鄉"
+        },
         "name": "嘉義縣東石鄉"
     },
     "worksFor": {
         "@type": "Organization",
-        "name": "巧韻歌藝教唱班"
-    }
+        "name": "巧韻歌藝教唱班",
+        "description": "嘉義在地歌唱教學團體，專精台語歌唱、長青社區歌唱指導。",
+        "areaServed": {
+            "@type": "Place",
+            "address": {
+                "@type": "PostalAddress",
+                "addressRegion": "嘉義縣",
+                "addressLocality": "東石鄉"
+            }
+        }
+    },
+    "alumni": [
+        {
+            "description": "2024 台語歌唱比賽冠軍"
+        },
+        {
+            "description": "東石漁人盃亞軍"
+        },
+        {
+            "description": "台語歌唱賽優勝"
+        }
+    ],
+    "performerIn": [
+        {
+            "@type": "Event",
+            "name": "公益巡演",
+            "description": "巧韻歌藝教唱班於東石五處長照據點公益演出，累計五場",
+            "location": "嘉義縣東石鄉"
+        }
+    ]
 }
 </script>
     
@@ -64,13 +123,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://您的網址.com">
+    <link rel="canonical" href="https://yutainyow-singing.pages.dev/">
     
     <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎤</text></svg>">
     
     <style>
-        /* ========== 基礎設定 ========== */
         /* ========== 全域變數與重置 ========== */
 :root {
     --primary-blue: #2563EB;
@@ -1401,12 +1459,12 @@ footer {
     </div>
     <div class="photo-pair">
         <div class="photo-item">
-            <img src="images/judge-yu-tianyou-01.JPG" 
+            <img src="images/judge-yu-tianyou-01.jpg" 
                  alt="余天佑老師擔任歌唱比賽評審" 
                  loading="lazy">
         </div>
         <div class="photo-item">
-            <img src="images/judge-yu-tianyou-02.JPG" 
+            <img src="images/judge-yu-tianyou-02.jpg" 
                  alt="余天佑老師認真評分" 
                  loading="lazy">
         </div>
@@ -1615,12 +1673,12 @@ footer {
     </div>
     <div class="photo-pair">
         <div class="photo-item">
-            <img src="images/host-yu-tianyou-01.JPG" 
+            <img src="images/host-yu-tianyou-01.jpg" 
                  alt="余天佑老師擔任典禮主持人" 
                  loading="lazy">
         </div>
         <div class="photo-item">
-            <img src="images/host-yu-tianyou-02.JPG" 
+            <img src="images/host-yu-tianyou-02.jpg" 
                  alt="余天佑老師活動主持" 
                  loading="lazy">
         </div>
@@ -1722,7 +1780,7 @@ footer {
     <!-- 1. 警察學員 黃先生 -->
     <div class="student-card fade-in">
         <div class="student-photo">
-            <img src="images/student-huang-police.JPG"
+            <img src="images/student-huang-police.jpg"
                  alt="主辦方與學員合照"
                  loading="lazy">
         </div>
@@ -1741,7 +1799,7 @@ footer {
     <!-- 2. 巧韻班長 黃班長 -->
     <div class="student-card fade-in">
         <div class="student-photo">
-            <img src="images/student-huang-dance.JPG"
+            <img src="images/student-huang-dance.jpg"
                  alt="巧韻班長活力舞台"
                  loading="lazy">
         </div>
@@ -1760,7 +1818,7 @@ footer {
     <!-- 3. 巧韻學員 -->
     <div class="student-card fade-in">
         <div class="student-photo">
-            <img src="images/student-group.JPG"
+            <img src="images/student-group.jpg"
                  alt="巧韻班學員三人獲獎"
                  loading="lazy">
         </div>
@@ -1780,7 +1838,7 @@ footer {
     <!-- 4. 巧韻學員 蔡小姐 -->
     <div class="student-card fade-in">
         <div class="student-photo">
-            <img src="images/student-01.JPG"
+            <img src="images/student-01.jpg"
                  alt="巧韻班學員獲獎"
                  loading="lazy">
         </div>
@@ -1799,7 +1857,7 @@ footer {
     <!-- 5. 個人班 黃筱君 -->
     <div class="student-card fade-in">
         <div class="student-photo">
-            <img src="images/student-huang-personal.JPG"
+            <img src="images/student-huang-personal.jpg"
                  alt="個人班學員冠軍"
                  loading="lazy">
         </div>
@@ -1863,7 +1921,7 @@ footer {
             <!-- 1. 公益巡演 Part 1 -->
             <div class="charity-card fade-in">
                 <div class="charity-photo">
-                    <img src="images/charity-group-03.JPG"
+                    <img src="images/charity-group-03.jpg"
                          alt="巧韻歌藝教唱班公益巡演第一場，於東石安德日照中心與長輩同樂"
                          loading="lazy">
                     <div class="photo-overlay">巧韻歌唱班公益表演 Part 1</div>
@@ -1881,7 +1939,7 @@ footer {
             <!-- 2. 公益巡演 Part 2 -->
             <div class="charity-card fade-in">
                 <div class="charity-photo">
-                    <img src="images/charity-group-01.JPG"
+                    <img src="images/charity-group-01.jpg"
                          alt="余天佑老師帶領巧韻學員於弘道猿樹社區服務中心公益表演"
                          loading="lazy">
                     <div class="photo-overlay">巧韻歌唱班公益表演 Part 2</div>
@@ -1899,7 +1957,7 @@ footer {
             <!-- 3. 公益巡演 Part 3 -->
             <div class="charity-card fade-in">
                 <div class="charity-photo">
-                    <img src="images/charity-group-02.JPG"
+                    <img src="images/charity-group-02.jpg"
                          alt="巧韻歌唱班公益巡演第三場，東石社區關懷據點溫馨演出"
                          loading="lazy">
                     <div class="photo-overlay">巧韻歌唱班公益表演 Part 3</div>
@@ -1917,7 +1975,7 @@ footer {
             <!-- 4. 公益巡演 Part 4 -->
             <div class="charity-card fade-in">
                 <div class="charity-photo">
-                    <img src="images/charity-show-01.JPG"
+                    <img src="images/charity-show-01.jpg"
                          alt="巧韻學員公益表演特寫於塭港醫事C級巷弄長照站公益歌唱，長輩開心互動"
                          loading="lazy">
                     <div class="photo-overlay">巧韻歌唱班公益表演 Part 4</div>
@@ -1934,7 +1992,7 @@ footer {
             <!-- 5. 學員表演特寫（Part 5） -->
             <div class="charity-card fade-in">
                 <div class="charity-photo">
-                    <img src="images/charity-group-04.JPG"
+                    <img src="images/charity-group-04.jpg"
                          alt="巧韻歌唱班學員於長生樂活圍潭據點公益表演"
                          loading="lazy">
                     <div class="photo-overlay">巧韻歌唱班公益表演 Part 5</div>
@@ -1966,7 +2024,7 @@ footer {
             <div class="activity-card fade-in">
                 <div class="activity-tag">社區交流</div>
                 <div class="activity-icon" style="background: none; padding: 0; overflow: hidden; width: 100%; height: 200px; border-radius: 16px; margin-bottom: 1.5rem;">
-    <img src="images/activity-dongshi-community.JPG"
+    <img src="images/activity-dongshi-community.jpg"
          alt="東石社區敬老餐會晚會，巧韻歌藝教唱班受邀表演，余天佑老師主持同樂"
          loading="lazy"
          style="width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 16px;">
@@ -1981,7 +2039,7 @@ footer {
             <div class="activity-card fade-in">
                 <div class="activity-tag">宗教活動</div>
                 <div class="activity-icon" style="background: none; padding: 0; overflow: hidden; width: 100%; height: 200px; border-radius: 16px; margin-bottom: 1.5rem;">
-                    <img src="images/activity-christmas.JPG"
+                    <img src="images/activity-christmas.jpg"
                          alt="余天佑老師聖誕節發糖果傳福音，與社區居民分享節日喜悅"
                          loading="lazy"
                          style="width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 16px;">
@@ -1996,7 +2054,7 @@ footer {
             <div class="activity-card fade-in">
                 <div class="activity-tag">尾牙活動</div>
                 <div class="activity-icon" style="background: none; padding: 0; overflow: hidden; width: 100%; height: 200px; border-radius: 16px; margin-bottom: 1.5rem;">
-    <img src="images/activity-year-end-party.JPG"
+    <img src="images/activity-year-end-party.jpg"
          alt="巧韻歌藝教唱班東石尾牙聯歡晚會，余天佑老師與學員歡聚年終"
          loading="lazy"
          style="width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 16px;">
