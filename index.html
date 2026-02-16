@@ -58,6 +58,9 @@
     .playfair{ font-family:'Playfair Display',serif; }
     .montserrat{ font-family:'Montserrat',sans-serif; }
 
+    /* ===== Anchor offset for fixed nav ===== */
+    section[id]{ scroll-margin-top: 110px; }
+
     /* ===== Nav ===== */
     nav{
       position:fixed; top:0; left:0; right:0;
@@ -100,34 +103,44 @@
       color:var(--accent-gold);
       font-size:1.8rem;
       cursor:pointer;
+      padding:.25rem .4rem;
+      border-radius:10px;
+      border:1px solid rgba(212,165,116,.15);
+      background:rgba(10,22,40,.25);
+      backdrop-filter: blur(10px);
     }
     .mobile-menu{
       display:none;
       position:fixed;
-      top:72px;
+      top:70px;
       left:0; right:0;
       background:rgba(10,22,40,.96);
       backdrop-filter:blur(16px);
-      padding:1.25rem 1.1rem;
+      padding:1.25rem 1.15rem;
       flex-direction:column;
-      gap:.9rem;
+      gap:.85rem;
       border-top:1px solid rgba(212,165,116,.12);
       z-index:999;
     }
     .mobile-menu a{
-      font-size:1.1rem;
-      padding:.45rem .25rem;
+      font-size:1.06rem;
+      padding:.55rem .25rem;
       color:var(--text-light);
       text-decoration:none;
+      border-radius:10px;
+    }
+    .mobile-menu a:hover{
+      background:rgba(212,165,116,.10);
+      color:var(--accent-gold);
     }
 
     /* ===== Sections ===== */
-    section{ padding:7.3rem 2rem; position:relative; }
+    section{ padding:7.2rem 2rem; position:relative; }
     .wrap{ max-width:1200px; margin:0 auto; }
     .section-title{
-      font-size:clamp(2.05rem,4.6vw,3.6rem);
-      font-weight:900;
-      margin-bottom:3.1rem;
+      font-size:clamp(2.1rem,4.6vw,3.6rem);
+      font-weight:800;
+      margin-bottom:3.2rem;
       position:relative;
       display:inline-block;
       letter-spacing:.02em;
@@ -158,7 +171,7 @@
       justify-content:center;
       background:linear-gradient(135deg,#0a1628 0%,#1e2a3a 100%);
       overflow:hidden;
-      padding-top:6.3rem;
+      padding-top:6.5rem;
     }
     .hero::before{
       content:'';
@@ -187,22 +200,24 @@
       color:rgba(245,241,232,.88);
       font-size:.92rem;
       letter-spacing:.06em;
-      margin-bottom:1.25rem;
+      margin-bottom:1.35rem;
       backdrop-filter:blur(10px);
+      flex-wrap:wrap;
+      justify-content:center;
+      row-gap:.35rem;
     }
-    .badge b{ color:var(--accent-gold); font-weight:900; }
-
+    .badge b{ color:var(--accent-gold); font-weight:700; }
     .hero-title{
       font-size:clamp(2.55rem,6.8vw,5.4rem);
       font-weight:900;
       line-height:1.12;
-      margin-bottom:1.2rem;
+      margin-bottom:1.35rem;
       opacity:0;
       transform:translateY(24px);
       animation:fadeInUp 1s ease forwards .25s;
     }
     .hero-subtitle{
-      font-size:clamp(1.05rem,2.2vw,1.55rem);
+      font-size:clamp(1.08rem,2.2vw,1.6rem);
       font-weight:300;
       letter-spacing:.14em;
       color:var(--accent-gold);
@@ -211,7 +226,7 @@
       animation:fadeInUp 1s ease forwards .48s;
     }
     .hero-one-liner{
-      margin:1.7rem auto 0;
+      margin:1.85rem auto 0;
       max-width:860px;
       font-size:1.12rem;
       font-weight:300;
@@ -223,7 +238,7 @@
     }
 
     .hero-cta-row{
-      margin-top:2.2rem;
+      margin-top:2.4rem;
       display:flex;
       justify-content:center;
       gap:1rem;
@@ -237,10 +252,10 @@
       align-items:center;
       justify-content:center;
       gap:.6rem;
-      padding:1rem 1.55rem;
+      padding:1rem 1.6rem;
       border-radius:999px;
       text-decoration:none;
-      font-weight:900;
+      font-weight:600;
       letter-spacing:.06em;
       transition:all .28s ease;
       border:1px solid rgba(212,165,116,.22);
@@ -264,47 +279,25 @@
       transform:translateY(-3px) scale(1.02);
     }
 
-    @keyframes fadeInUp{ to{ opacity:1; transform:translateY(0);} }
-
-    /* ===== Scroll hint: 不跟 CTA 搶戲（不固定在底部） ===== */
+    /* 重要：不要卡按鈕，scroll 變成「自然流」 */
     .scroll-indicator{
-      margin-top: 2.6rem;
-      display: inline-flex;
-      flex-direction: column;
-      align-items: center;
-      gap: .65rem;
-
-      opacity: 0;
-      animation: fadeInUp 1s ease forwards 1.35s, bounceSoft 2.2s ease-in-out infinite 2.4s;
-
-      transition: opacity .35s ease, transform .35s ease;
+      margin-top:2.2rem;
+      opacity:0;
+      animation:fadeInUp 1s ease forwards 1.35s;
+      display:inline-flex;
+      flex-direction:column;
+      align-items:center;
+      gap:.6rem;
     }
     .scroll-indicator::before{
       content:'';
       display:block;
-      width:1px;
-      height:44px;
-      background: linear-gradient(to bottom, transparent, var(--accent-gold));
-      opacity:.55;
+      width:1px; height:46px;
+      background:linear-gradient(to bottom, transparent, var(--accent-gold));
+      opacity:.85;
     }
-    .scroll-indicator .scroll-text{
-      font-size:.78rem;
-      letter-spacing:.22em;
-      color: var(--accent-gold);
-      opacity:.8;
-    }
-    @keyframes bounceSoft{
-      0%,100%{ transform: translateY(0); }
-      50%{ transform: translateY(-6px); }
-    }
-    .scroll-indicator.hide{
-      opacity: 0;
-      transform: translateY(-6px);
-      pointer-events: none;
-    }
-    @media (max-height: 700px){
-      .scroll-indicator{ display:none; }
-    }
+
+    @keyframes fadeInUp{ to{ opacity:1; transform:translateY(0);} }
 
     /* ===== Quick paths ===== */
     .paths{ background:var(--bg-secondary); }
@@ -344,12 +337,12 @@
       font-size:.84rem;
       letter-spacing:.12em;
       color:var(--accent-gold);
-      font-weight:900;
+      font-weight:700;
       margin-bottom:.6rem;
     }
     .path-title{
       font-size:1.35rem;
-      font-weight:900;
+      font-weight:800;
       margin-bottom:.55rem;
     }
     .path-desc{
@@ -363,7 +356,7 @@
       align-items:center;
       gap:.6rem;
       color:var(--accent-gold);
-      font-weight:900;
+      font-weight:600;
       letter-spacing:.06em;
       font-size:.95rem;
     }
@@ -390,7 +383,10 @@
       transform:translateY(26px);
       transition:all .35s ease;
     }
-    .result-item.visible{ opacity:1 !important; transform:translateY(0) !important; }
+    .result-item.visible{
+      opacity:1 !important;
+      transform:translateY(0) !important;
+    }
     .result-item:hover{
       transform:translateY(-6px);
       border-color:rgba(212,165,116,.55);
@@ -410,16 +406,6 @@
       letter-spacing:.02em;
       color:rgba(245,241,232,.85);
       line-height:1.7;
-    }
-    .result-note{
-      margin-top:1.2rem;
-      color:rgba(245,241,232,.62);
-      font-weight:300;
-      line-height:1.9;
-      max-width:900px;
-      margin-left:auto;
-      margin-right:auto;
-      font-size:.98rem;
     }
 
     /* ===== Proof gallery ===== */
@@ -448,7 +434,7 @@
     .shot img{
       width:100%;
       height:100%;
-      object-fit:cover;
+      object-fit:cover; /* proof 區維持 cover：氛圍大圖比較有質感 */
       display:block;
       transform:scale(1.02);
       transition:transform .35s ease;
@@ -472,15 +458,16 @@
       font-size:.85rem;
       color:rgba(245,241,232,.80);
       letter-spacing:.10em;
-      font-weight:900;
+      font-weight:600;
       margin-bottom:.2rem;
     }
     .shot-title{
       font-size:1.05rem;
-      font-weight:900;
+      font-weight:800;
       color:var(--accent-gold);
       line-height:1.35;
     }
+
     .span-6{ grid-column:span 6; }
     .span-4{ grid-column:span 4; }
     .span-3{ grid-column:span 3; }
@@ -499,7 +486,7 @@
     }
     .mini-proof b{
       color:var(--accent-gold);
-      font-weight:900;
+      font-weight:800;
     }
     .mini-proof p{
       margin-top:.55rem;
@@ -513,7 +500,7 @@
     .philosophy-grid{
       display:grid;
       grid-template-columns:38% 1fr;
-      gap:4.2rem;
+      gap:4.5rem;
       align-items:start;
     }
     .philo-quote{
@@ -567,7 +554,7 @@
     .pillar-card:hover::before{ color:rgba(212,165,116,.10); }
     .pillar-kicker{
       color:var(--accent-gold);
-      font-weight:900;
+      font-weight:800;
       letter-spacing:.14em;
       font-size:.86rem;
       margin-bottom:.65rem;
@@ -595,7 +582,7 @@
       margin-top:0;
     }
     .pillar-card.expanded .pillar-detail{
-      max-height:540px;
+      max-height:560px;
       border-top-color:rgba(212,165,116,.16);
       padding-top:1rem;
       margin-top:.9rem;
@@ -605,7 +592,7 @@
       align-items:center;
       gap:.55rem;
       color:var(--accent-gold);
-      font-weight:900;
+      font-weight:800;
       letter-spacing:.06em;
       font-size:.95rem;
       user-select:none;
@@ -623,82 +610,94 @@
       line-height:1;
     }
 
-    /* ===== Achievements timeline ===== */
+    /* =========================
+       Achievements (穿插小照片 / 不裁切)
+       ========================= */
     .achievements{ background:var(--bg-primary); }
-    .timeline{
-      position:relative;
-      max-width:980px;
+
+    .ach-grid{
+      max-width:1050px;
       margin:2.2rem auto 0;
-    }
-    .timeline::before{
-      content:'';
-      position:absolute;
-      left:26px; top:0; bottom:0;
-      width:2px;
-      background:linear-gradient(to bottom, transparent, var(--accent-gold), transparent);
-      opacity:.9;
-    }
-    .t-item{
-      display:grid;
-      grid-template-columns:70px 1fr;
+      display:flex;
+      flex-direction:column;
       gap:1.2rem;
-      padding:1rem 0 1.8rem;
-      position:relative;
+    }
+
+    .ach-item{
+      display:grid;
+      grid-template-columns: 120px 1fr;
+      gap:1.1rem;
+      align-items:stretch;
       opacity:0;
       transform:translateY(22px);
+      transition:all .35s ease;
+      position:relative;
     }
-    .t-item.visible{ opacity:1 !important; transform:translateY(0) !important; }
-    .t-year{
+    .ach-item.visible{ opacity:1 !important; transform:translateY(0) !important; }
+
+    .ach-year{
       font-family:'Playfair Display',serif;
       font-weight:900;
       color:rgba(212,165,116,.35);
-      font-size:1.7rem;
+      font-size:1.9rem;
       text-align:right;
-      padding-right:.4rem;
+      padding-top:.35rem;
     }
-    .t-dot{
-      position:absolute;
-      left:26px;
-      top:1.35rem;
-      width:14px; height:14px;
-      background:var(--accent-gold);
-      border:4px solid var(--bg-primary);
-      border-radius:50%;
-      transform:translateX(-50%);
-    }
-    .t-card{
+
+    .ach-card{
       background:rgba(30,42,58,.55);
       border:1px solid rgba(212,165,116,.18);
       border-radius:16px;
-      padding:1.35rem 1.35rem;
+      padding:1.25rem 1.25rem;
       transition:all .3s ease;
+      position:relative;
+      overflow:hidden;
     }
-    .t-card:hover{
+    .ach-card:hover{
       transform:translateY(-4px);
       border-color:rgba(212,165,116,.6);
       box-shadow:0 18px 60px rgba(212,165,116,.10);
     }
-    .t-title{
+
+    /* 內部：文字 + 小照片（穿插） */
+    .ach-row{
+      display:grid;
+      grid-template-columns: 1fr 180px;
+      gap:1.05rem;
+      align-items:start;
+    }
+
+    /* 交錯：偶數筆圖片在左 */
+    .ach-item.alt .ach-row{
+      grid-template-columns: 180px 1fr;
+    }
+    .ach-item.alt .ach-media{ order:1; }
+    .ach-item.alt .ach-body{ order:2; }
+
+    .ach-title{
       color:var(--accent-gold);
       font-weight:900;
       font-size:1.2rem;
       margin-bottom:.35rem;
     }
-    .t-winner{
-      font-weight:700;
+    .ach-winner{
+      font-weight:600;
       margin-bottom:.6rem;
-      color:rgba(245,241,232,.9);
+      color:rgba(245,241,232,.92);
+      line-height:1.8;
     }
-    .t-winner strong{ color:var(--accent-gold); }
-    .t-note{
+    .ach-winner strong{ color:var(--accent-gold); }
+
+    .ach-note{
       color:rgba(245,241,232,.72);
       font-style:italic;
       border-left:3px solid rgba(212,165,116,.7);
       padding-left:1rem;
       line-height:1.9;
+      margin-bottom:.85rem;
     }
-    .t-method{
-      margin-top:.85rem;
+
+    .ach-method{
       background:rgba(10,22,40,.35);
       border:1px solid rgba(212,165,116,.12);
       border-radius:12px;
@@ -707,7 +706,33 @@
       font-weight:300;
       line-height:1.85;
     }
-    .t-method b{ color:var(--accent-gold); font-weight:900; }
+    .ach-method b{ color:var(--accent-gold); font-weight:900; }
+
+    /* 小照片：不裁切 */
+    .ach-media{
+      border-radius:14px;
+      border:1px solid rgba(212,165,116,.18);
+      background:rgba(10,22,40,.42);
+      overflow:hidden;
+      box-shadow:0 18px 50px rgba(0,0,0,.25);
+    }
+    .ach-media img{
+      width:100%;
+      height:160px;
+      display:block;
+      object-fit:contain;           /* ✅ 不裁切 */
+      object-position:center;
+      background:rgba(10,22,40,.65); /* 讓透明/比例差的圖也好看 */
+      padding:8px;                  /* 讓 contain 有邊界舒服 */
+    }
+    .ach-caption{
+      padding:.55rem .7rem .65rem;
+      font-size:.9rem;
+      color:rgba(245,241,232,.72);
+      font-weight:300;
+      line-height:1.6;
+      border-top:1px solid rgba(212,165,116,.10);
+    }
 
     /* ===== Services ===== */
     .services{ background:var(--bg-secondary); }
@@ -775,7 +800,7 @@
       border:1px solid rgba(212,165,116,.35);
       color:var(--accent-gold);
       text-decoration:none;
-      font-weight:900;
+      font-weight:800;
       letter-spacing:.05em;
       transition:all .28s ease;
     }
@@ -786,9 +811,7 @@
     }
 
     /* ===== Charity ===== */
-    .charity{
-      background:linear-gradient(135deg,#2a2520 0%,#1e2a3a 100%);
-    }
+    .charity{ background:linear-gradient(135deg,#2a2520 0%,#1e2a3a 100%); }
     .charity-grid{
       display:grid;
       grid-template-columns:repeat(5, minmax(0,1fr));
@@ -859,7 +882,7 @@
       justify-content:space-between;
       gap:1rem;
       cursor:pointer;
-      font-weight:900;
+      font-weight:800;
       letter-spacing:.02em;
       font-size:1.05rem;
     }
@@ -890,7 +913,7 @@
     .cta{
       background:linear-gradient(135deg,#0a1628 0%,#1e2a3a 100%);
       text-align:center;
-      padding:7.8rem 2rem;
+      padding:8.2rem 2rem;
     }
     .cta-card{
       max-width:980px;
@@ -985,33 +1008,6 @@
       color:rgba(245,241,232,.62);
       line-height:1.7;
     }
-    .helper-actions{
-      display:flex;
-      gap:.7rem;
-      flex-wrap:wrap;
-      margin-top:.8rem;
-    }
-    .helper-actions button, .helper-actions a{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:.55rem;
-      padding:.78rem 1rem;
-      border-radius:999px;
-      border:1px solid rgba(212,165,116,.24);
-      background:rgba(10,22,40,.25);
-      color:var(--accent-gold);
-      font-weight:900;
-      letter-spacing:.05em;
-      cursor:pointer;
-      text-decoration:none;
-      transition:all .22s ease;
-    }
-    .helper-actions button:hover, .helper-actions a:hover{
-      transform:translateY(-2px);
-      border-color:rgba(212,165,116,.55);
-      box-shadow:0 14px 50px rgba(212,165,116,.12);
-    }
 
     /* ===== Footer ===== */
     footer{
@@ -1099,28 +1095,98 @@
     /* ===== Anim helper ===== */
     .visible{ opacity:1 !important; transform:translateY(0) !important; }
 
-    /* ===== Responsive ===== */
-    @media (max-width: 1100px){
-      .results-grid{ grid-template-columns:repeat(2,minmax(0,1fr)); }
-      .services-grid{ grid-template-columns:1fr; }
+    /* =========================
+       RWD (重新規劃：980 / 768 / 480)
+       ========================= */
+
+    /* <= 980px: 平板/小筆電 */
+    @media (max-width: 980px){
+      section[id]{ scroll-margin-top: 98px; }
+
       .paths-grid{ grid-template-columns:1fr; }
+      .results-grid{ grid-template-columns:repeat(2, minmax(0,1fr)); }
       .pillars-grid{ grid-template-columns:1fr; }
       .philosophy-grid{ grid-template-columns:1fr; gap:2rem; }
-      .charity-grid{ grid-template-columns:repeat(2,minmax(0,1fr)); }
+
+      .services-grid{ grid-template-columns:1fr; }
       .proof-pillars{ grid-template-columns:1fr; }
+      .charity-grid{ grid-template-columns:repeat(2, minmax(0,1fr)); }
       .contact-grid{ grid-template-columns:1fr; }
-    }
-    @media (max-width: 900px){
-      .proof-grid{ gap:.8rem; }
+
+      /* proof 跨欄 */
       .span-6{ grid-column:span 12; }
       .span-4{ grid-column:span 6; }
       .span-3{ grid-column:span 6; }
+
+      /* achievements：照片保持不裁切，卡片內更寬鬆 */
+      .ach-row{ grid-template-columns: 1fr 200px; }
+      .ach-item.alt .ach-row{ grid-template-columns: 200px 1fr; }
+      .ach-media img{ height:170px; }
     }
+
+    /* <= 768px: 手機主斷點 */
     @media (max-width: 768px){
       section{ padding:5.2rem 1.2rem; }
-      nav .nav-links{ display:none; }
-      .mobile-menu-btn{ display:block !important; }
+      section[id]{ scroll-margin-top: 92px; }
+
+      nav .nav-links{ display:none !important; }
+      .mobile-menu-btn{ display:inline-flex !important; }
       .mini-form{ grid-template-columns:1fr; }
+
+      .results-grid{ grid-template-columns:1fr; }
+
+      /* achievements：改成「圖片在上、文字在下」，穿插仍保留（只是順序一致更好讀） */
+      .ach-item{
+        grid-template-columns: 1fr;
+        gap:.6rem;
+      }
+      .ach-year{
+        text-align:left;
+        padding-top:0;
+        font-size:1.6rem;
+        opacity:.9;
+      }
+      .ach-row{
+        grid-template-columns: 1fr;
+      }
+      .ach-item.alt .ach-row{
+        grid-template-columns: 1fr;
+      }
+      .ach-media img{
+        height:220px; /* 手機給更大，且不裁切 */
+        padding:10px;
+      }
+
+      /* 按鈕在手機更舒服 */
+      .btn{ min-width:0; }
+    }
+
+    /* <= 480px: 小手機 */
+    @media (max-width: 480px){
+      .hero-title{ line-height:1.15; }
+      .hero-one-liner{ font-size:1.02rem; }
+
+      .hero-cta-row{ gap:.75rem; }
+      .btn{ width:100%; }
+
+      /* proof：全部一欄 */
+      .span-4{ grid-column:span 12; }
+      .span-3{ grid-column:span 12; }
+
+      /* charity：一欄 */
+      .charity-grid{ grid-template-columns:1fr; }
+
+      /* 浮動電話按鈕稍微小一點 */
+      .float-cta{ width:56px; height:56px; bottom:1.2rem; right:1.2rem; }
+      .float-cta span{ display:none; }
+    }
+
+    /* 矮螢幕避免 Hero 擠爆 */
+    @media (max-height: 720px){
+      .badge{ margin-bottom:.9rem; }
+      .hero-one-liner{ margin-top:1.2rem; }
+      .hero-cta-row{ margin-top:1.6rem; }
+      .scroll-indicator{ margin-top:1.5rem; }
     }
   </style>
 
@@ -1166,6 +1232,9 @@
         "founder":{"@id":"https://yutainyow-singing.pages.dev/#person"},
         "sameAs":[
           "https://www.facebook.com/yu.tian.you.765447"
+        ]
+        "knowsAbout":[
+           "聲音訓練","歌唱技巧","台語歌曲咬字","舞台表演","歌唱比賽指導","樂齡歌唱"
         ]
       },
       {
@@ -1258,13 +1327,13 @@
   <section id="hero" class="hero">
     <div class="hero-inner">
       <div class="badge">
-        <span>系統訓練</span>
+        <span>專業系統訓練</span>
         <span style="opacity:.6;">•</span>
-        <span>比賽實戰</span>
+        <span>快樂學習文化</span>
         <span style="opacity:.6;">•</span>
-        <b>穩定成果</b>
+        <b>穩定舞台成果</b>
         <span style="opacity:.6;">•</span>
-        <span>公益分享</span>
+        <span>公益演出</span>
       </div>
 
       <h1 class="hero-title serif">用歌聲說故事<br>用真情打動人心</h1>
@@ -1273,9 +1342,9 @@
       <p class="hero-one-liner">
         想唱得更穩、更有感、更敢上台？<br>
         我們用<strong style="color:var(--accent-gold);font-weight:900;">系統化聲音訓練</strong>把技術練扎實，
-        用<strong style="color:var(--accent-gold);font-weight:900;">實戰準備</strong>把舞台練熟，
+        用<strong style="color:var(--accent-gold);font-weight:900;">比賽實戰</strong>把舞台練熟，
         用<strong style="color:var(--accent-gold);font-weight:900;">心態建設</strong>把你練得更有自信。<br>
-        專業不壓迫——成果自然看得見。
+        專業不壓迫、快樂不放鬆——成果自然看得見。
       </p>
 
       <div class="hero-cta-row">
@@ -1283,8 +1352,8 @@
         <a class="btn" href="#proof">先看照片</a>
       </div>
 
-      <div class="scroll-indicator" id="scrollHint" aria-hidden="true">
-        <div class="scroll-text">SCROLL</div>
+      <div class="scroll-indicator" aria-hidden="true">
+        <div style="font-size:.78rem;color:var(--accent-gold);letter-spacing:.22em;">SCROLL</div>
       </div>
     </div>
   </section>
@@ -1299,7 +1368,7 @@
       </p>
 
       <div class="paths-grid">
-        <div class="path-card" data-jump="#service-competition">
+        <div class="path-card" data-jump="#services">
           <div class="path-tag">PATH 01</div>
           <div class="path-title serif">我想比賽得獎 / 站上舞台</div>
           <div class="path-desc">選曲策略、段落情緒、咬字處理、臨場心態——把舞台拆成可準備的項目，讓你穩穩發揮。</div>
@@ -1348,7 +1417,7 @@
         <div class="result-item">
           <!-- 你說「近年累積得獎根本不只這些」：這裡改成更合理的呈現方式 -->
           <div class="result-number" data-target="30" data-plus="true">0</div>
-          <div class="result-label">近年得獎學生案例（持續累積）</div>
+          <div class="result-label">近年得獎學生案例<br>（持續累積）</div>
         </div>
       </div>
 
@@ -1369,7 +1438,7 @@
 
       <div class="proof-grid" aria-label="照片作品集">
         <!-- 權威：評審/主持（大圖） -->
-        <div class="shot span-6" data-lightbox="images/judge-01.jpg">
+        <div class="shot span-6" data-lightbox="images/judge-yu-tainyow-02.jpg">
           <img src="images/judge-yu-tainyow-02.jpg" alt="余天佑老師｜歌唱比賽評審現場" loading="lazy" width="1200" height="800">
           <div class="shot-meta">
             <div class="shot-kicker">AUTHORITY / 評審</div>
@@ -1377,8 +1446,8 @@
           </div>
         </div>
 
-        <div class="shot span-6" data-lightbox="images/host-01.jpg">
-          <img src="images/host-yu-tainyow-02.jpg" alt="余天佑老師｜活動主持現場" loading="lazy" width="1200" height="800">
+        <div class="shot span-6" data-lightbox="images/host-yu-tainyow-01.jpg">
+          <img src="images/host-yu-tainyow-01.jpg" alt="余天佑老師｜活動主持現場" loading="lazy" width="1200" height="800">
           <div class="shot-meta">
             <div class="shot-kicker">STAGE / 主持</div>
             <div class="shot-title serif">舞台節奏 × 臨場穩定，讓你上台更穩</div>
@@ -1386,11 +1455,11 @@
         </div>
 
         <!-- 成果：學員（中圖） -->
-        <div class="shot span-4" data-lightbox="images/student-competition-01.jpg">
+        <div class="shot span-4" data-lightbox="images/student-huang-police01.jpg">
           <img src="images/student-huang-police01.jpg" alt="學員比賽｜定點演唱畫面" loading="lazy" width="900" height="900">
           <div class="shot-meta">
             <div class="shot-kicker">RESULT / 比賽</div>
-            <div class="shot-title serif">把技巧唱出來：穩定度才是關鍵</div>
+            <div class="shot-title serif">把技巧唱出來：穩定度才是關鍵<br>穩了分數就來了</div>
           </div>
         </div>
 
@@ -1398,12 +1467,12 @@
           <img src="images/student-award-01.jpg" alt="學員成果｜頒獎畫面" loading="lazy" width="900" height="900">
           <div class="shot-meta">
             <div class="shot-kicker">RESULT / 頒獎</div>
-            <div class="shot-title serif">成果可以被看見：不是運氣，是方法</div>
+            <div class="shot-title serif">努力看得見：不是運氣，是用方法換來的榮耀</div>
           </div>
         </div>
 
-        <div class="shot span-4" data-lightbox="images/group-happy-01.jpg">
-          <img src="images/activity-year-end-party.jpg" alt="團體班合照｜歡樂學習氛圍" loading="lazy" width="900" height="900">
+        <div class="shot span-4" data-lightbox="images/activity-year-end-party.jpg">
+          <img src="images/activity-year-end-party.jpg" alt="巧韻團體班合照｜歡樂學習氛圍" loading="lazy" width="900" height="900">
           <div class="shot-meta">
             <div class="shot-kicker">CULTURE / 氛圍</div>
             <div class="shot-title serif">快樂學習文化：敢唱、敢錯、敢上台</div>
@@ -1411,7 +1480,7 @@
         </div>
 
         <!-- 價值：長青班/公益（小圖） -->
-        <div class="shot span-3" data-lightbox="images/senior-class-01.jpg">
+        <div class="shot span-3" data-lightbox="images/service-senior-community-02.jpg">
           <img src="images/service-senior-community-02.jpg" alt="長青班教學｜帶奶奶唱歌的畫面" loading="lazy" width="800" height="800">
           <div class="shot-meta">
             <div class="shot-kicker">SENIOR / 樂齡</div>
@@ -1419,7 +1488,7 @@
           </div>
         </div>
 
-        <div class="shot span-3" data-lightbox="images/charity-01.jpg">
+        <div class="shot span-3" data-lightbox="images/charity-group.jpg">
           <img src="images/charity-group.jpg" alt="公益演出｜巧韻歌唱班公益巡演" loading="lazy" width="800" height="800">
           <div class="shot-meta">
             <div class="shot-kicker">CHARITY</div>
@@ -1427,18 +1496,18 @@
           </div>
         </div>
 
-        <div class="shot span-3" data-lightbox="images/community-01.jpg">
+        <div class="shot span-3" data-lightbox="images/activity-dongshi-community.jpg">
           <img src="images/activity-dongshi-community.jpg" alt="社區活動｜舞台與交流" loading="lazy" width="800" height="800">
           <div class="shot-meta">
             <div class="shot-kicker">COMMUNITY</div>
-            <div class="shot-title serif">在社區裡分享溫度</div>
+            <div class="shot-title serif">在社區裡分享溫度散播歡樂</div>
           </div>
         </div>
 
         <div class="shot span-3" data-lightbox="images/personal-class-01.jpg">
-          <img src="images/personal-class-01.jpg" alt="個人班側拍｜一對一指導" loading="lazy" width="800" height="800">
+          <img src="images/personal-class-01.jpg" alt="教學現場｜個人班側拍｜一對一指導" loading="lazy" width="800" height="800">
           <div class="shot-meta">
-            <div class="shot-kicker">COACHING</div>
+            <div class="shot-kicker">TEACHING</div>
             <div class="shot-title serif">把問題抓準：進步才會快</div>
           </div>
         </div>
@@ -1470,7 +1539,7 @@
     <div class="wrap">
       <div class="philosophy-grid">
         <div>
-          <h2 class="section-title serif">品牌理念</h2>
+          <h2 class="section-title serif">教學理念</h2>
           <p class="philo-quote">「聲音教育的本質，是讓人更自由。」</p>
         </div>
         <div class="philo-text">
@@ -1556,51 +1625,83 @@
         <strong style="color:var(--accent-gold);font-weight:900;">技術穩定 × 心態穩定 × 實戰準備</strong>
       </p>
 
-      <div class="timeline" aria-label="學員成果時間軸">
-        <div class="t-item">
-          <div class="t-year">2025</div>
-          <div class="t-card">
-            <div class="t-title serif">東石蠔聲音</div>
-            <div class="t-winner">黃同學：<strong>冠軍</strong></div>
-            <div class="t-note">「身為阿Sir只能抓緊時間練習，短短幾個月居然冠軍！」</div>
-            <div class="t-method"><b>策略亮點：</b>短期訓練聚焦「呼吸穩定 → 句尾收束 → 情緒段落」，把分數集中在最有效的評分點。</div>
+      <div class="ach-grid">
+        <!-- 案例1：東石蠔聲音 -->
+        <div class="ach-item">
+          <div class="ach-year">2025</div>
+          <div class="ach-card">
+            <div class="ach-row">
+              <div class="ach-body">
+                <div class="ach-title serif">東石蠔聲音</div>
+                <div class="ach-winner">黃同學：<strong>冠軍</strong></div>
+                <div class="ach-note">"身為阿Sir只能抓緊時間練習，短短幾個月居然冠軍!"</div>
+                <div class="ach-method"><b>策略亮點：</b>短期訓練聚焦「呼吸穩定 → 句尾收束 → 情緒段落」，把分數集中在最有效的評分點。</div>
+              </div>
+              <div class="ach-media" data-lightbox="images/student-huang-police.jpg">
+                <img src="images/student-huang-police.jpg" alt="學員成果｜2025 頒獎照片" loading="lazy">
+                <div class="ach-caption">頒獎畫面</div>
+              </div>
+            </div>
           </div>
-          <div class="t-dot"></div>
         </div>
 
-        <div class="t-item">
-          <div class="t-year">2025</div>
-          <div class="t-card">
-            <div class="t-title serif">嘉義縣禪淨寺</div>
-            <div class="t-winner">黃同學 × 王同學：<strong>冠軍 × 亞軍</strong></div>
-            <div class="t-note">「從隨意唱到上台與優秀選手角逐，僅半年時間。」</div>
-            <div class="t-method"><b>策略亮點：</b>建立「開場節奏與穩定度」，再補「咬字與情緒」；讓台語歌不只唱準，更唱得有故事。</div>
+        <div class="ach-item alt">
+          <div class="ach-year">2025</div>
+          <div class="ach-card">
+            <div class="ach-row">
+              <div class="ach-body">
+                <div class="ach-title serif">嘉義縣禪淨寺</div>
+                <div class="ach-winner">黃同學 × 王同學：<strong>冠軍 × 亞軍</strong></div>
+                <div class="ach-note">"從隨意唱到上台與優秀選手角逐，僅半年時間"</div>
+                <div class="ach-method"><b>策略亮點：</b>建立「開場節奏與穩定度」，再補「咬字與情緒」；讓台語歌不只唱準，更唱得有故事。</div>
+              </div>
+              <div class="ach-media" data-lightbox="images/student-01.jpg">
+                <img src="images/student-01.jpg" alt="學員成果｜2025 比賽定點照片" loading="lazy">
+                <div class="ach-caption">得獎與老師合照</div>
+              </div>
+            </div>
           </div>
-          <div class="t-dot"></div>
         </div>
 
-        <div class="t-item">
-          <div class="t-year">2024</div>
-          <div class="t-card">
-            <div class="t-title serif">五府千歲盃歌唱比賽</div>
-            <div class="t-winner">黃同學 × 陳同學 × 李同學：<strong>金冠軍 × 銀冠軍 × 冠軍</strong></div>
-            <div class="t-note">「跟著老師指導我們越唱越年輕！」</div>
-            <div class="t-method"><b>策略亮點：</b>用「段落設計」與「情緒層次」把舞台完整度拉滿，唱起來更有生命力。</div>
+        <div class="ach-item">
+          <div class="ach-year">2024</div>
+          <div class="ach-card">
+            <div class="ach-row">
+              <div class="ach-body">
+                <div class="ach-title serif">五府千歲盃歌唱比賽</div>
+                <div class="ach-winner">黃同學 × 陳同學 × 李同學：<strong>金冠軍 × 銀冠軍 × 冠軍</strong></div>
+                <div class="ach-note">"跟著老師指導我們越唱越年輕!"</div>
+                <div class="ach-method"><b>策略亮點：</b>同一首歌的「段落設計」與「情緒層次」，把舞台完整度拉滿，唱起來更有生命力。</div>
+              </div>
+              <div class="ach-media" data-lightbox="images/student-group.jpg">
+                <img src="images/student-group.jpg" alt="學員成果｜2024 頒獎照片" loading="lazy">
+                <div class="ach-caption">賽前開心合照</div>
+              </div>
+            </div>
           </div>
-          <div class="t-dot"></div>
         </div>
 
-        <div class="t-item">
-          <div class="t-year">2024</div>
-          <div class="t-card">
-            <div class="t-title serif">古恩宮盃歌唱比賽</div>
-            <div class="t-winner">黃同學：<strong>冠軍</strong></div>
-            <div class="t-note">「從氣息不穩到比賽常勝軍，余老師的得意門生。」</div>
-            <div class="t-method"><b>策略亮點：</b>長期把「氣息耐久」練穩，臨場就不怕；再用「收尾與情緒張力」做出記憶點。</div>
+        <div class="ach-item alt">
+          <div class="ach-year">2024</div>
+          <div class="ach-card">
+            <div class="ach-row">
+              <div class="ach-body">
+                <div class="ach-title serif">古恩宮盃歌唱比賽</div>
+                <div class="ach-winner">黃同學：<strong>冠軍</strong></div>
+                <div class="ach-note">"從氣息不穩到比賽常勝軍，余老師的得意門生"</div>
+                <div class="ach-method"><b>策略亮點：</b>長期把「氣息耐久」練穩，臨場就不怕；再用「收尾與情緒張力」做出記憶點。</div>
+              </div>
+              <div class="ach-media" data-lightbox="images/student-huang-personal.jpg">
+                <img src="images/student-huang-personal.jpg" alt="學員成果｜2024 比賽定點照片（不裁切）" loading="lazy">
+                <div class="ach-caption">冠軍頒獎</div>
+              </div>
+            </div>
           </div>
-          <div class="t-dot"></div>
         </div>
-      </div>
+    </div>
+    <div style="text-align:center;margin-top:2.2rem;">
+        <a class="btn primary" href="#contact">我想直接諮詢：我適合怎麼練？</a>
+    </div>
     </div>
   </section>
 
@@ -1610,7 +1711,7 @@
       <h2 class="section-title serif">教學服務</h2>
       <p class="lead">
         不同目標、不同節奏，都能找到適合的方式。<br>
-        我們把訓練做「系統」，把氛圍做「自在」，讓你敢練也敢上台。
+        我們把訓練當系統，把氛圍做「自在」，讓你敢練也敢自信上台。
       </p>
 
       <div class="services-grid">
@@ -1715,8 +1816,7 @@
     <div class="wrap">
       <h2 class="section-title serif">FAQ</h2>
       <p class="lead">
-        你不用先很厲害才來。你只要願意開始，剩下交給方法。<br>
-        下面這幾題，通常看完就會更確定要不要聯絡。
+        你不用先很厲害才來。你只要願意開始，剩下交給方法。
       </p>
 
       <div class="faq-wrap">
@@ -1754,28 +1854,15 @@
           </button>
           <div class="a">
             <div class="a-inner">
-              能。緊張很多時候來自「不知道自己撐不撐得住」。當你的氣息更穩、結構更清楚，你的身體會更相信自己。<br>
-              我們也會練「上台流程」：站位、開場節奏、段落轉換、臨場失誤處理，讓你有一套可依靠的方法。
-            </div>
-          </div>
-        </div>
-
-        <div class="qa">
-          <button class="q" type="button">
-            <div>沒有專業形象照會不會扣分？</div>
-            <span>+</span>
-          </button>
-          <div class="a">
-            <div class="a-inner">
-              不會。對教學品牌來說，最有說服力的是「教學現場 / 舞台現場 / 學員成果 / 公益活動」。<br>
-              你已經有這些照片了（而且比形象照更能成交）。未來如果要補形象照，我會建議做「舞台感」或「教學感」的半身照即可，不必棚拍也能很高級。
+              能。緊張很多時候來自不知道自己撐不撐得住。當你的氣息更穩、結構更清楚，你的身體會更相信自己。<br>
+              我們也有練上台流程：站位、開場節奏、段落轉換、臨場失誤處理，讓你有一套可依靠的方法。
             </div>
           </div>
         </div>
       </div>
 
       <div style="text-align:center;margin-top:2.2rem;">
-        <a class="btn primary" href="#contact">看完我想直接聯絡</a>
+        <a class="btn primary" href="#contact">看完想直接聯絡</a>
       </div>
     </div>
   </section>
@@ -1801,18 +1888,18 @@
         <div class="contact-box">
           <h4 class="serif">聯絡資訊</h4>
           <p>
-            📞 報名專線：<a href="tel:0928789592">0928-789-592</a><br>
+            📞 報名專線：<a href="tel:0928789592">點我開啟通話</a><br>
             ⏰ 服務時間：週一至週六 09:00–19:00（請先預約）<br>
             📍 服務地區：嘉義縣市為主｜全台評審/主持邀約可洽談<br>
-            🔗 老師臉書：<a href="https://www.facebook.com/yu.tian.you.765447" target="_blank" rel="noopener">facebook.com/yu.tian.you.765447</a>
+            🔗 老師臉書：<a href="https://www.facebook.com/yu.tian.you.765447" target="_blank" rel="noopener">Facebook 看更多</a>
           </p>
         </div>
 
         <div class="contact-box">
-          <h4 class="serif">不方便講電話？用表單整理需求 → 直接私訊更快</h4>
+          <h4 class="serif">不方便講電話？歡迎私訊我</h4>
           <p style="margin-bottom:.6rem;">
-            填完按送出，我會先幫你把內容整理成「一段訊息」並複製起來，接著自動開啟 Facebook 私訊頁面。<br>
-            <span style="color:rgba(245,241,232,.62);font-size:.95rem;">（Facebook 目前不保證能直接預填訊息，所以採用「自動複製 → 你貼上送出」的方式，最穩也最不出錯。）</span>
+            填完按送出，會先把內容整理成「一段訊息」並複製，接著自動開啟 Facebook 私訊頁面。<br>
+            <span style="color:rgba(245,241,232,.62);font-size:.95rem;">記得送出給我喔!</span>
           </p>
 
           <form class="mini-form" id="leadForm">
@@ -1830,12 +1917,12 @@
           </form>
 
           <div class="helper-actions">
-            <button type="button" id="copyOnlyBtn">📋 只複製訊息</button>
-            <a href="https://m.me/yu.tian.you.765447" target="_blank" rel="noopener">💬 開啟 FB 私訊</a>
+            <button type="button" id="copyOnlyBtn">📋 先複製晚點送</button>
+            <a href="https://m.me/yu.tian.you.765447" target="_blank" rel="noopener">💬 立即開啟 FB 私訊</a>
           </div>
 
           <div class="form-note" id="formNote">
-            ※ 送出後會先自動複製訊息，並開啟 FB 私訊；你只要貼上送出即可。
+            ※ 送出後會先自動複製訊息，並開啟 FB 私訊；<br>你只要貼上送出即可。
           </div>
         </div>
       </div>
@@ -1853,22 +1940,23 @@
 
       <div class="footer-info">
         <h3 class="serif">教學服務</h3>
-        <p>🎵 巧韻歌藝教唱班（團體）｜🏆 比賽個人指導｜🌸 長青社區歌唱班</p>
+        <p>🎵 團體班｜🏆 比賽個人指導｜🌸 長青社區班</p>
         <p style="margin-top:1rem;color:rgba(245,241,232,.62);">
-          用歌聲說故事，用真情打動人心
+          © 2025 余天佑歌唱教學. All rights reserved.
         </p>
       </div>
     </div>
 
-    <div class="footer-bottom">
-      <p>© 2026 余天佑歌唱教學. All rights reserved.</p>
+     <div class="footer-bottom">
+      <p>網站網址：https://yutainyow-singing.pages.dev/</p>
+      <p>用歌聲說故事，用真情打動人心</p>
     </div>
   </footer>
 
   <!-- Lightbox -->
   <div id="lightbox" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,.82); z-index:2000; align-items:center; justify-content:center; padding:1.2rem;">
     <div style="max-width:1000px;width:100%; position:relative;">
-      <button id="lightboxClose" aria-label="關閉預覽" style="position:absolute; top:-10px; right:-10px; width:44px; height:44px; border-radius:50%; border:1px solid rgba(212,165,116,.45); background:rgba(10,22,40,.55); color:var(--accent-gold); font-weight:900; font-size:1.2rem; cursor:pointer;">✕</button>
+      <button id="lightboxClose" style="position:absolute; top:-10px; right:-10px; width:44px; height:44px; border-radius:50%; border:1px solid rgba(212,165,116,.45); background:rgba(10,22,40,.55); color:var(--accent-gold); font-weight:900; font-size:1.2rem; cursor:pointer;">✕</button>
       <img id="lightboxImg" src="" alt="預覽圖片" style="width:100%; max-height:78vh; object-fit:contain; border-radius:16px; border:1px solid rgba(212,165,116,.22); background:rgba(10,22,40,.35);" />
     </div>
   </div>
@@ -1912,7 +2000,7 @@
         link.classList.remove('active');
         if(link.getAttribute('href') === `#${current}`) link.classList.add('active');
       });
-    }, { passive:true });
+    });
 
     // ===== Mobile menu toggle =====
     const menuBtn = document.querySelector('.mobile-menu-btn');
@@ -1964,6 +2052,7 @@
       btn.addEventListener('click', ()=>{
         const qa = btn.closest('.qa');
         const open = qa.classList.contains('open');
+
         document.querySelectorAll('.qa.open').forEach(x=>x.classList.remove('open'));
         if(!open) qa.classList.add('open');
       });
@@ -1980,16 +2069,22 @@
       });
     }, observerOptions);
 
-    document.querySelectorAll('.result-item, .t-item').forEach(el=>reveal.observe(el));
+    document.querySelectorAll('.result-item, .ach-item').forEach(el=>reveal.observe(el));
 
-    // ===== Counter animation =====
+    // ===== Counter animation (data-target 必須是數字) =====
     const counterObs = new IntersectionObserver((entries)=>{
       entries.forEach(entry=>{
         if(!entry.isIntersecting) return;
         const el = entry.target;
         const target = parseInt(el.getAttribute('data-target'), 10);
         const hasPlus = el.getAttribute('data-plus') === 'true';
-        const duration = 1200;
+        if(Number.isNaN(target)){
+          el.textContent = el.getAttribute('data-target') || '0';
+          counterObs.unobserve(el);
+          return;
+        }
+
+        const duration = 1400;
         const step = target / (duration/16);
         let cur = 0;
 
@@ -2035,92 +2130,30 @@
       if(e.key === 'Escape') closeLightbox();
     });
 
-    // ===== Scroll hint: hide after user starts scrolling =====
-    const scrollHint = document.getElementById('scrollHint');
-    let scrollHintHidden = false;
-
-    function hideScrollHint(){
-      if (!scrollHint || scrollHintHidden) return;
-      scrollHint.classList.add('hide');
-      scrollHintHidden = true;
-      window.removeEventListener('scroll', onFirstScroll);
-      window.removeEventListener('touchstart', hideScrollHint);
-      window.removeEventListener('wheel', hideScrollHint);
-    }
-    function onFirstScroll(){
-      if (window.scrollY > 20) hideScrollHint();
-    }
-    window.addEventListener('scroll', onFirstScroll, { passive:true });
-    window.addEventListener('touchstart', hideScrollHint, { passive:true });
-    window.addEventListener('wheel', hideScrollHint, { passive:true });
-
-    // ===== Form -> Copy message -> Open FB Messenger =====
-    const FB_MESSENGER_URL = 'https://m.me/yu.tian.you.765447';
+    // ===== Mini form (copy) =====
     const form = document.getElementById('leadForm');
-    const note = document.getElementById('formNote');
-    const copyOnlyBtn = document.getElementById('copyOnlyBtn');
-
-    function buildMessageFromForm(formEl){
-      const data = new FormData(formEl);
-      const name = (data.get('name')||'').toString().trim();
-      const phone = (data.get('phone')||'').toString().trim();
-      const goal = (data.get('goal')||'').toString().trim();
-      const msg = (data.get('msg')||'').toString().trim();
-
-      const lines = [
-        '【諮詢需求】',
-        `稱呼：${name}`,
-        `電話：${phone}`,
-        `目標：${goal}`,
-        `補充：${msg || '（無）'}`
-      ];
-      return lines.join('\n');
-    }
-
-    async function copyText(text){
-      try{
-        await navigator.clipboard.writeText(text);
-        return true;
-      }catch(e){
-        return false;
-      }
-    }
-
-    async function handleSubmit(openMessenger){
-      if(!form) return;
-      const text = buildMessageFromForm(form);
-
-      const ok = await copyText(text);
-      if(note){
-        note.textContent = ok
-          ? '✅ 已複製你的需求內容！接下來會開啟 FB 私訊，直接貼上送出即可。'
-          : '⚠️ 你的瀏覽器不支援自動複製。請在跳出的視窗手動複製內容，再貼到 FB 私訊送出。';
-      }
-
-      if(openMessenger){
-        window.open(FB_MESSENGER_URL, '_blank', 'noopener');
-      }
-
-      if(ok){
-        alert('已複製需求內容！\n接下來會開啟 FB 私訊。\n你只要貼上送出即可。');
-      }else{
-        alert('自動複製失敗。\n請手動複製下列內容並貼到 FB 私訊：\n\n' + text);
-      }
-    }
-
     if(form){
-      form.addEventListener('submit', async (e)=>{
+      form.addEventListener('submit', (e)=>{
         e.preventDefault();
-        await handleSubmit(true);
-        form.reset();
-      });
-    }
+        const data = new FormData(form);
+        const name = (data.get('name')||'').toString().trim();
+        const phone = (data.get('phone')||'').toString().trim();
+        const goal = (data.get('goal')||'').toString().trim();
+        const msg = (data.get('msg')||'').toString().trim();
 
-    if(copyOnlyBtn && form){
-      copyOnlyBtn.addEventListener('click', async ()=>{
-        const text = buildMessageFromForm(form);
-        const ok = await copyText(text);
-        alert(ok ? '已複製訊息！你可以貼到 FB 私訊送出。' : '複製失敗，請手動複製。');
+        const text =
+`【諮詢需求】
+稱呼：${name}
+電話：${phone}
+目標：${goal}
+補充：${msg || '（無）'}`;
+
+        navigator.clipboard.writeText(text).then(()=>{
+          alert('已複製需求內容！\n你可以貼到 FB 訊息、簡訊或其他管道，我會更快回覆。');
+          form.reset();
+        }).catch(()=>{
+          alert('複製失敗，請手動複製：\n\n' + text);
+        });
       });
     }
   </script>
